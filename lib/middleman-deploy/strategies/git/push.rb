@@ -7,11 +7,16 @@ module Middleman
             Dir.chdir(self.build_dir) do
               add_remote_url
               checkout_branch
+              pull_branch
               commit_branch
             end
           end
 
           private
+
+          def pull_branch
+            `git pull origin master`
+          end
 
           def add_remote_url
             url = get_remote_url
