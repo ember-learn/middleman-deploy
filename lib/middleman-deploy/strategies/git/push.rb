@@ -4,6 +4,7 @@ module Middleman
       module Git
         class Push < Base
           def process
+            require'pry';binding.pry
             Dir.chdir(self.build_dir) do
               add_remote_url
               checkout_branch
@@ -22,8 +23,7 @@ module Middleman
             url = get_remote_url
 
             unless File.exist?('.git')
-              `git init`
-              `git remote add origin #{url}`
+              `git clone #{url}`
               `git config user.name "#{self.user_name}"`
               `git config user.name "#{self.user_email}"`
             else
