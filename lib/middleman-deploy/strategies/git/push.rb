@@ -36,7 +36,8 @@ module Middleman
           def get_remote_url
             remote  = self.remote
             url     = remote
-require'pry';binding.pry
+            puts remote
+            puts url
             # check if remote is not a git url
             unless remote =~ /\.git$/
               url = `git config --get remote.#{url}.url`.chop
