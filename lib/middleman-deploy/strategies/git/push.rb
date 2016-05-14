@@ -7,16 +7,11 @@ module Middleman
             Dir.chdir(self.build_dir) do
               add_remote_url
               checkout_branch
-              pull_branch
               commit_branch
             end
           end
 
           private
-
-          def pull_branch
-            `git pull origin master`
-          end
 
           def add_remote_url
             url = get_remote_url
@@ -41,7 +36,7 @@ module Middleman
           def get_remote_url
             remote  = self.remote
             url     = remote
-
+require'pry';binding.pry
             # check if remote is not a git url
             unless remote =~ /\.git$/
               url = `git config --get remote.#{url}.url`.chop
