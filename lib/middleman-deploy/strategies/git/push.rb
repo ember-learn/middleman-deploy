@@ -4,7 +4,6 @@ module Middleman
       module Git
         class Push < Base
           def process
-            require'pry';binding.pry
             Dir.chdir(self.build_dir) do
               add_remote_url
               checkout_branch
