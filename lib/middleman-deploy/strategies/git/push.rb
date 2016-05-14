@@ -6,7 +6,6 @@ module Middleman
           def process
             Dir.chdir(self.build_dir) do
               clone_remote_url
-              add_remote_url
               checkout_branch
               commit_branch
             end
