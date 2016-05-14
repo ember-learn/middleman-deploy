@@ -15,6 +15,8 @@ module Middleman
           private
           
           def clone_remote_url
+            url = get_remote_url
+
             `git clone #{url}`
             `git config user.name "#{self.user_name}"`
             `git config user.name "#{self.user_email}"`
