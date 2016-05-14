@@ -18,7 +18,7 @@ module Middleman
             
             `git init`
             `git remote add origin #{url}`
-            `git pull`
+            `git pull origin #{self.branch}`
             `git config user.name "#{self.user_name}"`
             `git config user.name "#{self.user_email}"`
           end
