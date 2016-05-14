@@ -15,8 +15,10 @@ module Middleman
           
           def clone_remote_url
             url = get_remote_url
-
-            `git clone #{url} .`
+            
+            `git init`
+            `git remote add origin #{url}`
+            `git pull`
             `git config user.name "#{self.user_name}"`
             `git config user.name "#{self.user_email}"`
           end
