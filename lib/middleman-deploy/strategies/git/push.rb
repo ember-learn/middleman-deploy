@@ -22,7 +22,8 @@ module Middleman
 
             run_or_fail "git add ."
             run_or_fail "git commit -m 'hum'"
-            run_or_fail "git pull origin #{self.branch} --rebase" 
+            run_or_fail "git fetch origin #{self.branch}"
+            run_or_fail "git rebase #{self.branch}" 
           end
 
           def get_remote_url
