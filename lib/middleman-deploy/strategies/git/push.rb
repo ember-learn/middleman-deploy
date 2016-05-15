@@ -5,7 +5,7 @@ module Middleman
         class Push < Base
           def process
             run_or_fail 'git clone git@github.com:ember-learn/emberjs.github.com.git'
-            run_or_fail 'rsync -a ./build/* ./emberjs.github.com'
+            run_or_fail 'rsync -a build/* emberjs.github.com'
             Dir.chdir('emberjs.github.com') do
               commit_branch
             end
@@ -18,19 +18,6 @@ module Middleman
           end
 
           private
-          
-          def clone_remote_url
-            url = get_remote_url
-            run_or_fail "git init"
-            run_or_fail "git config user.name \"#{self.user_name}\""
-            run_or_fail "git config user.name \"#{self.user_email}\""
-            run_or_fail "git remote add origin #{url}"
-
-            run_or_fail "git add ."
-            run_or_fail "git commit -m 'hum'"
-            run_or_fail "git fetch origin #{self.branch}"
-            run_or_fail "git rebase #{self.branch}" 
-          end
 
           def get_remote_url
             remote  = self.remote
