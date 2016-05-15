@@ -5,7 +5,7 @@ module Middleman
         class Push < Base
           def process
             run_or_fail 'git clone git@github.com:ember-learn/emberjs.github.com.git'
-            run_or_fail 'mv build/* emberjs.github.com'
+            run_or_fail 'cp build/* emberjs.github.com'
             Dir.chdir('emberjs.github.com') do
               commit_branch
             end
