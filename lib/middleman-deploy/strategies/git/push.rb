@@ -16,11 +16,13 @@ module Middleman
           def clone_remote_url
             url = get_remote_url
             
-            `git init`
-            `git remote add origin #{url}`
-            `git pull origin #{self.branch}`
-            `git config user.name "#{self.user_name}"`
-            `git config user.name "#{self.user_email}"`
+            run_or_fail "git init"
+            run_or_fail "git remote add origin #{url}"
+            run_or_fail "git stash"
+            run_or_fail "git pull origin #{self.branch}"
+            run_or_fail "git stash pop"
+            run_or_fail "git config user.name \"#{self.user_name}\""
+            run_or_fail "git config user.name \"#{self.user_email}\""
           end
 
           def get_remote_url
